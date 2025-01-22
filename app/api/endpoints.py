@@ -4,7 +4,6 @@ from apscheduler.triggers.interval import IntervalTrigger
 from fastapi import APIRouter, Body, HTTPException, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database.db import get_session
-from app.services.dao import get_product
 from app.services.utils import data_get
 
 logger = logging.getLogger(__name__)
@@ -30,10 +29,7 @@ async def reload_product(artikul: int, session: AsyncSession = Depends(get_sessi
             logger.info(f"Except {e}")
             return HTTPException(status_code=404, detail="Atrikul not found or can't register job")
 
-
-"""
 @app_router.get("/info/{artikul}")
 async def get_prod_info(artikul: int, session: AsyncSession = Depends(get_session)):
-    result = await get_product(artikul, session)
+    result = await data_get(artikul, session)
     return {"result": result}
-"""
