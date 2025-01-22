@@ -1,0 +1,9 @@
+# created by virtualenv automatically
+.idea/
+.env
+.venv/
+__pycache__
+__init__
+*.log
+alembic/
+alembic.ini
